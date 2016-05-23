@@ -1,0 +1,12 @@
+{
+  "name": "examples",
+  "version": "0.0.0",
+  "description": "Exercises from my Coursera's courses",
+  "main": "server.js",
+  "repository": "",
+  "private": true,
+  "author": "David Sabalete <dsabalete@gmail.com>",
+  "dependencies": {
+   
+  }
+}
