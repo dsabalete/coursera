@@ -1,4 +1,5 @@
 if (Meteor.isServer) {
+  
   Meteor.startup(function(){
     
     if (Images.find().count() == 0) {
@@ -14,5 +15,6 @@ if (Meteor.isServer) {
   
     } // end of if have no images 
     
-  }); // end startup  
+  }); // end startup 
+  
 }
