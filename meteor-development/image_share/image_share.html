@@ -7,16 +7,16 @@
   
   <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container">
-      
       {{> loginButtons}}    
-      
     </div>
   </nav>
 
 
   <div class="container">
-    <h1>Welcome to image share!</h1>
+    <h1>Welcome to image share {{username}}!</h1>
+    
     {{> images}}
+    
   </div>
 </body>
 
@@ -47,7 +47,9 @@
 </template>
 
 <template name="images">
+  {{#if currentUser}}
   <button class="btn btn-success js-show-image-form">add image</button>
+  {{/if}}
 	<div class="row">
   {{#each images}}
   <div class="col-xs-12 col-md-3" id="{{_id}}">
