@@ -49,7 +49,7 @@ if (Meteor.isClient) {
                 createdOn: new Date()
             });
             
-            $("#image_add_form").modal('show');
+            $("#image_add_form").modal('hide');
             
             return false;
         },
