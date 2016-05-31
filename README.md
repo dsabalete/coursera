@@ -26,6 +26,10 @@ For adding Twitter Bootstrap package to our project:
 
     $meteor add twbs:bootstrap
     
+For addind Simple templates to add login widgets to an app & password support for accounts:
+
+    $meteor add accounts-ui accounts-password
+    
     
     
 
