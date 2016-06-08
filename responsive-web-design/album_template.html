@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+   <title></title>
+
+    <!-- include our libraries and css files -->
+    <script src="js/jquery-2.1.4.min.js"></script>
+    <script src="js/handlebars-v3.0.3.js"></script>
+    
+    <script src="js/bootstrap.min.js"></script>
+    
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/gallery.css" rel="stylesheet">
+
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+  </head>
+  <body>
+    
+    <nav class="navbar navbar-default">
+      <div class="container">
+        <!-- start collpased navbar -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed"
+            data-toggle="collapse"
+            data-target="#my_navbar"
+            aria-expanded="false">open!</button>
+        </div><!-- / collpased navbar -->
+        
+        <!-- start un-collapsed navbar -->
+        <div class="collapse navbar-collapse" id="my_navbar">
+          <ul class="nav navbar-nav">
+            <li><a href="index.html">Home</a></li>
+            <li class="active"><a href="albums.html">Albums</a></li>
+            <li><a href="photos.html">All photos</a></li>
+          </ul>
+        </div><!-- / un-collpased navbar -->
+        
+      </div><!-- /container -->
+    </nav>
+    
+    <div class="container">
+      
+      <h1>Here are my albums</h1>
+      
+      <!-- start breadcrumb -->
+      <ol class="breadcrumb">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="albums.html">Albums</a></li>
+      </ol><!-- / breadcrumb -->
+      
+      
+      <!--
+       the content of the web page starts off empty
+       because we will fill it later from the template
+       We use container-fluid because our template uses
+       the bootstrap grid
+      -->
+      <div id="content"  class="container-fluid"  role="main">
+      </div>
+      
+    </div><!-- / container -->
+    
+    
+      <!--
+    This template displays many photos in an album.
+    Is uses the {{#each }} template tag which repeats the
+    innter bit of the template for each element of an array
+  -->
+  <script id="album-template" type="text/x-handlebars-template">
+
+    <div class="row">
+      {{#each images}}
+        <div class="col-xs-12 col-md-3">
+        
+          <a href="photo1.html">
+            <div class="thumbnail" data-id="{{@index}}">
+              <img class="crop-img" src="{{src}}" alt=""/>
+              
+              <div class="author">
+                <h3> {{title}} </h3>
+                <p> {{author}} </p>
+              </div>
+            </div>
+          </a>
+          
+        </div> <!-- / col -->
+      {{/each}}
+    </div> <!-- / row -->
+      
+  </script>
+    
+
+  <!--
+    The javascript code to instantiate the template
+  -->
+  <script type="text/javascript">
+    // get the source code for our two template
+    // and compile them
+    var source   = $("#album-template").html();
+    var template = Handlebars.compile(source);
+
+    // define the data for the template
+    // we define an objects which contains an
+    // array of other objects. This array will be used
+    // to create multiple images
+    var data = {images:[
+         {
+       src: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Shopping_Center_Magna_Plaza_Amsterdam_2014.jpg/600px-Shopping_Center_Magna_Plaza_Amsterdam_2014.jpg",
+           title: "Shopping Center Magna Plaza Amsterdam 2014",
+           author: "Tuxyso",
+           },
+         {
+       src: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/The_Earth_seen_from_Apollo_17.jpg/600px-The_Earth_seen_from_Apollo_17.jpg", 
+           title:"The Earth seen from Apollo 17",
+           author:"Ed g2s"
+           },
+         {
+       src:"https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Barnard_33.jpg/300px-Barnard_33.jpg",
+           title: "horse nebula",
+           author: "John Smith",
+           },
+         {
+           src:"http://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Wwii_woman_worker-edit.jpg/300px-Wwii_woman_worker-edit.jpg",
+           title:"wwii woman worker",
+           author:"Another author",
+        },
+         {
+       src:"http://upload.wikimedia.org/wikipedia/commons/thumb/1/15/Lijiang_Yunnan_China-Naxi-people-carrying-baskets-01.jpg/300px-Lijiang_Yunnan_China-Naxi-people-carrying-baskets-01.jpg",
+           title:"Lijiang Yunnan China Naxi people carrying baskets-",
+           author:"Wikimedia Commons",
+           },
+         {
+       src:"http://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Stift_G%C3%B6ttweig_Gobelinzimmer_01.JPG/300px-Stift_G%C3%B6ttweig_Gobelinzimmer_01.JPG",
+           title:"Marco's house",
+           author:"Wikimedia Commons",
+           },
+
+         ]};
+
+    // render the data into the template
+    var html = template(data);
+    // put the rendered template into the DOM
+    $('#content').html(html);
+
+  </script>
+
+  </body>
+</html>
