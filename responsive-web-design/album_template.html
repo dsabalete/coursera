@@ -65,6 +65,15 @@
       <div id="content"  class="container-fluid"  role="main">
       </div>
       
+        
+      <!--
+        this div will contain the modal dialog which will
+        display the large image
+      -->
+      <div id="modal-container"  >
+      </div>      
+      
+      
     </div><!-- / container -->
     
     
@@ -79,8 +88,8 @@
       {{#each images}}
         <div class="col-xs-12 col-md-3">
         
-          <a href="photo1.html">
-            <div class="thumbnail" data-id="{{@index}}">
+          <a href="#" class="thumbnail" data-id="{{@index}}">
+            <div >
               <img class="crop-img" src="{{src}}" alt=""/>
               
               <div class="author">
@@ -95,6 +104,30 @@
     </div> <!-- / row -->
       
   </script>
+  
+  
+
+  <!--
+       This second template displays a modal pop-up of the image.
+       It has quite a bit of boilder plate HTML code but in
+       essence it just displays and image tag within a
+       set of divs that define the modal
+  -->
+  <script id="modal-template" type="text/x-handlebars-template">
+    <div id="imageModal" class="modal fade" role="dialog">
+      <div class="modal-dialog"  style="width:800">
+
+        <div class="modal-container">
+
+          <div class="modal-body">
+            <img  style="width:100%" src="{{src}}"/>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </script>  
     
 
   <!--
@@ -105,6 +138,9 @@
     // and compile them
     var source   = $("#album-template").html();
     var template = Handlebars.compile(source);
+    
+    source   = $("#modal-template").html();
+    var modal_template = Handlebars.compile(source);
 
     // define the data for the template
     // we define an objects which contains an
@@ -143,11 +179,25 @@
            },
 
          ]};
-
+    
     // render the data into the template
     var html = template(data);
     // put the rendered template into the DOM
     $('#content').html(html);
+    
+    
+    
+    $('.thumbnail').click(function(event) {
+      event.preventDefault();
+
+      var imageNumber = $(this).data('id');
+      var html = modal_template(data.images[imageNumber]);
+      
+      $('#modal-container').html(html);
+      
+      $('#imageModal').modal('show');
+      
+    });       
 
   </script>
 
