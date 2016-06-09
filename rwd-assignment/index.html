@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Animals gallery assignment</title>
+
+	<script src="js/jquery-2.1.4.min.js"></script>
+	<script src="js/handlebars-v3.0.3.js"></script>
+
+	<script src="js/bootstrap.min.js"></script>
+	<script src="AnimalsData.js"></script>
+	<script src="assignment.js"></script>
+
+	<link href="css/bootstrap.css" rel="stylesheet">
+	<link href="assignment.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+	<div class="container">
+
+		<div class="page-header">
+			<h1>Animals</h1>
+		</div>
+
+      <!-- nav tabs -->
+		<ul class="nav nav-tabs">
+			<li role=""><a href="#" id="categories-tab">Categories</a></li>
+			<li role=""><a href="#" id="photos-tab">Photos</a></li>
+			<li role=""><a href="#" id="detail-tab">Detail</a></li>
+		</ul><!-- / nav tabs -->
+      <br/><br/>
+
+
+		<div id="content"  class="container-fluid"  role="main"></div>
+
+	</div><!-- / container -->
+
+
+
+<!-- templates go here -->
+<script id="categories-template" type="text/x-handlebars-template">
+	<div class="row">
+
+		{{#each category}}
+		<div class="col-xs-12 col-md-3"> 
+			<div class="category-thumbnail"  data-id="{{@index}}">
+				{{#each animals}}
+					{{#if @first}} <img class="crop-img" src="{{image1}}" alt=""/> {{/if}}
+				{{/each}}
+				<div class="caption">
+					<h4> {{name}} </h4>
+					<p>{{animals.length}} animals</p>
+				</div>
+			</div>
+		</div> <!-- / col -->
+		{{/each}}
+
+	</div> <!-- / row -->
+</script>
+
+
+<script id="photos-template" type="text/x-handlebars-template">
+  <div class="row">
+
+    {{#each animals}}
+    <div class="col-xs-12 col-md-3"> 
+     <div class="animal-thumbnail"  data-id="{{@index}}">
+        <img class="crop-img" src="{{image1}}" alt=""/>
+      </div>
+    </div> <!-- / col -->
+
+    <div class="col-xs-12 col-md-3"> 
+     <div class="animal-thumbnail"  data-id="{{@index}}">
+        <img class="crop-img" src="{{image2}}" alt=""/>
+      </div>
+    </div> <!-- / col -->
+    {{/each}}
+
+  </div> <!-- / row -->
+</script>
+
+
+<script id="detail-template" type="text/x-handlebars-template">
+	<div class="row">
+
+   	<div class="col-xs-6"> 
+     		<img class="large-img" src="{{image1}}" alt=""/> 
+		</div> <!-- / col -->
+		<div class="col-xs-6"> 
+	      <div class="caption">
+	         <h3>{{name}}</h3>
+	         <p>{{description}}</p>
+	      </div>
+	   </div> <!-- / col -->
+
+		<div class="col-xs-12"> 
+          <img class="large-img" src="{{image2}}" alt=""/> 
+		</div> <!-- / col -->
+
+	</div> <!-- / row -->
+</script>
+
+
+</body>
+</html>
