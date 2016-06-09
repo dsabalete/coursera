@@ -20,12 +20,11 @@ $('document').ready(function() {
 	detail_template = Handlebars.compile(source);
 
 
-	// navigation styles
+	// navigation
 	$('.nav-tabs li').click(function() {
 		$(".nav-tabs .active").removeClass("active");
 		$(this).addClass("active");
 	});
-
 
 	$('#categories-tab').click(function() {
 		showTemplate(categories_template, animals_data);
