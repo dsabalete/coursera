@@ -1,0 +1,21 @@
+.crop-img{
+  max-height:150px;
+  max-width:100%;
+ 
+}
+
+.large-img{
+  max-width:100%;
+  margin: 10px;
+  box-shadow: 10px 10px 5px #888888;
+}
+
+.category-thumbnail .crop-img {
+  margin: 10px;
+  box-shadow: 10px 10px 5px #888888;
+}
+
+.animal-thumbnail .crop-img {
+  margin: 10px;
+  box-shadow: 10px 10px 5px #888888;
+}
