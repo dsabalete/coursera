@@ -1,6 +1,40 @@
 
+/// routing
+
+Router.configure({
+  layoutTemplate: 'ApplicationLayout'
+});
+
+Router.route('/', function () {
+  this.render('welcome',{
+      to: "main"
+  });
+});
+
+Router.route('/images', function () {
+  this.render('navbar', {
+      to:"navbar"
+  });
+  this.render('images', {
+      to:"main"
+  })
+});
+
+Router.route('/image/:_id', function () {
+  this.render('navbar', {
+      to:"navbar"
+  });
+  this.render('image', {
+      to:"main",
+      data:function() {
+          return Images.findOne({_id:this.params._id});
+      }
+  });
+});
+
+/// infiniscroll
+
 Session.set("imageLimit", 8);
-    
 lastScrollTop = 0;
 $(window).scroll(function(event) {
     // test if we are near the bottom of window
@@ -20,10 +54,16 @@ $(window).scroll(function(event) {
 });
 
 
+
+/// accounts config
+
 Accounts.ui.config({
     passwordSignupFields: "USERNAME_AND_EMAIL"
 });
 
+
+
+/// template images helpers
 
 Template.images.helpers({
     images:function(){
@@ -61,6 +101,9 @@ Template.images.helpers({
 });
 
 
+
+/// body template
+
 Template.body.helpers({username: function() {
     if (Meteor.user()) {
         //return Meteor.user().emails[0].address;
@@ -71,6 +114,9 @@ Template.body.helpers({username: function() {
 }
 });
 
+
+
+/// template images 
 
 Template.images.events({
     'click .js-image':function(event){
@@ -95,7 +141,6 @@ Template.images.events({
             {$set: {rating:rating}});
     },
     'click .js-show-image-form': function(event) {
-        console.log('js-show-image-form');
         $("#image_add_form").modal('show');
     },
     'click .js-set-image-filter': function(event) {
@@ -106,6 +151,9 @@ Template.images.events({
     }
 }); // end of image Template
 
+
+
+/// template image_add_form
 
 Template.image_add_form.events({
     'submit .js-add-image': function(event) {
