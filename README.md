@@ -12,7 +12,7 @@ Resources from Responsive Web Design course
 Main project for Meteor Development course
 For start meteo server use: 
 
-    $meteor --port $IP:$PORT
+    $ meteor --port $IP:$PORT
 
 For seaching packages from Meteor:
 
@@ -20,15 +20,25 @@ For seaching packages from Meteor:
     
 For searching for Boostrap package:
 
-    $meteor search twbs
+    $ meteor search twbs
     
 For adding Twitter Bootstrap package to our project:
 
-    $meteor add twbs:bootstrap
+    $ meteor add twbs:bootstrap
     
 For addind Simple templates to add login widgets to an app & password support for accounts:
 
-    $meteor add accounts-ui accounts-password
+    $ meteor add accounts-ui accounts-password
+    
+For securing a meteor app:
+
+    $ meteor remove insecure
+    
+For adding iron:router package:
+
+    $ meteor add iron:router
+    
+
     
     
     
