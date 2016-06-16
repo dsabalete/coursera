@@ -57,6 +57,7 @@
                 
                 <div class="tab-content">
                     <ul class="media-list tab-pane fade in active">
+                        
                         <li class="media" ng-repeat="dish in menuCtrl.dishes | filter:menuCtrl.filtText">
                             <div class="media-left media-middle">
                                 <a href="#">
@@ -71,14 +72,13 @@
                                 <p>{{dish.description}}</p>
                             </div>
                         </li>
+                        
                     </ul> 
                 </div>
             </div>
         </div>
         
     </div>
-
-
 
 
 
@@ -152,8 +152,6 @@
         
         
     });
-    
-    
     
 </script>
 </body>
